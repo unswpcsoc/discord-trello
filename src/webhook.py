@@ -3,8 +3,8 @@ TRELLO-CORD WEBHOOK
 
 Written for UNSW PCSoc
 
-This is the webhook server, it receives updates from the trello board and sends messages in the chat
-Where to send the message is specified the webhook url found in the webhook section of the integrations in Discord
+This is the webhook server, it receives updates from the trello board and sends messages in the Discord chat
+Where to send the message is specified by the webhook url found in the webhook section of the integrations in Discord
 """
 
 from flask import Flask, request, abort
@@ -20,10 +20,6 @@ async def send_message():
     async with aiohttp.ClientSession() as session:
         webhook = Webhook.from_url(URL, session=session)
         await webhook.send('The Trello Board has been updated', username='TrelloBot')
-
-
-# async def bar():
-#     await foo()
 
 app = Flask(__name__)
 
